@@ -1,0 +1,47 @@
+# Initialize counters
+spam_count = 0
+phishing_count = 0
+safe_count = 0
+check_more = "yes"
+while check_more == "yes":
+    # Step 1: Get the email content
+    email = input("\nEnter the email content: ").lower()
+ 
+    # Step 2: Keyword checks
+    is_spam = (
+        "win" in email
+        or "prize" in email
+        or "free money" in email
+        or "lottery" in email
+        or "bonus" in email
+        or "exclusive offer" in email
+    )
+ 
+    is_phishing = (
+        "urgent banking request" in email
+        or "account verification" in email
+        or "login now" in email
+        or "update password" in email
+        or "confirm bank details" in email
+    )
+ 
+    # Step 3: Classification
+    if is_phishing:
+        print("🚨 This email is flagged as a Phishing Attempt.")
+        phishing_count += 1
+    elif is_spam:
+        print("⚠️ This email is marked as Spam.")
+        spam_count += 1
+    else:
+        print("✅ This email is Safe.")
+        safe_count += 1
+ 
+    # Step 4: Ask to continue
+    check_more = input("Do you want to check another email? (yes/no): ").lower()
+ 
+# Step 5: Final summary
+print("\n📊 Email Scan Summary:")
+print("Spam Emails:", spam_count)
+print("Phishing Emails:", phishing_count)
+print("Safe Emails:", safe_count)
+ 
